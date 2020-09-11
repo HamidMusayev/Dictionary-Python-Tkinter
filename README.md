@@ -1,5 +1,8 @@
 # Dictionary-Python-Tkinter
 Dictionary app With GUI tkinter
+
+You can download only **[Setup file](https://github.com/hemidvs/Dictionary-Python-Tkinter/blob/master/dict-setup.exe)**
+
 # Screens
 <img align="center" src="https://github.com/hemidvs/Dictionary-Python-Tkinter/blob/master/screens/1.PNG?raw=true" />
 
@@ -11,6 +14,6 @@ Dictionary app With GUI tkinter
 
 
 
-**[Setup file](https://github.com/hemidvs/Dictionary-Python-Tkinter/blob/master/dict-setup.exe)**
+
 
 
