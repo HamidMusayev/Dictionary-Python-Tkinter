@@ -55,7 +55,6 @@ word_entry.place(relx=0.32, rely=0.55, relwidth=0.55, relheight=0.2, anchor="n")
 # Method to search word
 def search_word():
     word = (word_entry.get()).lower()
-    # closes = get_close_matches(word, data.keys())
 
     if word != "":
 
