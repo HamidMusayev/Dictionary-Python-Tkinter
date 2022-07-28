@@ -77,6 +77,7 @@ word_entry = ttk.Entry(frame1, font=ENTRY_FONT)
 word_entry.place(relx=0.32, rely=0.55, relwidth=0.55, relheight=0.2, anchor="n")
 
 
+# TODO simplify search function to becomen static, i.e. independent of application (GUI) elements
 def search_word() -> None:
     word: str = (word_entry.get()).lower()
 
@@ -136,6 +137,7 @@ hint_label.place(anchor="nw")
 means_label = ttk.Label(frame2, style="Means.TLabel", wraplength=630)
 means_label.place(rely=0.15, anchor="nw")
 
+# TODO uncomment this function to help user find out word options while typing
 # def translate(word):
 #     word = word.lower()
 #     closes = get_close_matches(word, data.keys())
