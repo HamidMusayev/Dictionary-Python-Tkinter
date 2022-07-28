@@ -3,8 +3,9 @@ from difflib import get_close_matches
 from tkinter import *
 from tkinter import ttk
 
-# Import data
-data = json.load(open("data.json"))
+# import dictionary
+with open("data.json") as dict_file:
+    dictionary = json.load(dict_file)
 
 # Constants
 window_color = "#12182B"
@@ -27,19 +28,36 @@ frame2.place(relx=0.49, rely=0.45, relwidth=0.85, relheight=0.5, anchor="n")
 
 # Styles
 hemidvs_style = ttk.Style()
-hemidvs_style.configure("Hemidvs.TLabel",  font=("Segoe UI", 8), foreground="white", background=window_color)
+hemidvs_style.configure(
+    "Hemidvs.TLabel", font=("Segoe UI", 8), foreground="white", background=window_color
+)
 
 frames_style = ttk.Style()
 frames_style.configure("Frame.TFrame", background=window_color)
 
 title_label_style = ttk.Style()
-title_label_style.configure("Title.TLabel", font=("Segoe UI", 22, "bold"), foreground="white", background=window_color)
+title_label_style.configure(
+    "Title.TLabel",
+    font=("Segoe UI", 22, "bold"),
+    foreground="white",
+    background=window_color,
+)
 
 hint_label_style = ttk.Style()
-hint_label_style.configure("Hint.TLabel", font=("Segoe UI", 10), foreground=hint_green_text_color, background=window_color)
+hint_label_style.configure(
+    "Hint.TLabel",
+    font=("Segoe UI", 10),
+    foreground=hint_green_text_color,
+    background=window_color,
+)
 
 means_label_style = ttk.Style()
-means_label_style.configure("Means.TLabel", font=("Segoe UI", 10), foreground=means_text_color, background=window_color)
+means_label_style.configure(
+    "Means.TLabel",
+    font=("Segoe UI", 10),
+    foreground=means_text_color,
+    background=window_color,
+)
 
 # Widgets
 hemidvs_label = ttk.Label(win, style="Hemidvs.TLabel", text="© made by hemidvs")
@@ -58,10 +76,10 @@ def search_word():
 
     if word != "":
 
-        if word in data:
+        if word in dictionary:
             hint_label.config(text="✓ Done!")
             hint_label_style.configure("Hint.TLabel", foreground=hint_green_text_color)
-            means = data[word]
+            means = dictionary[word]
             # if word have more means
             if type(means) == list:
                 i = 0
@@ -73,10 +91,10 @@ def search_word():
             else:
                 means_label.config(text=">> %s" % means)
 
-        elif word.title() in data:
+        elif word.title() in dictionary:
             hint_label.config(text="✓ Done!")
             hint_label_style.configure("Hint.TLabel", foreground=hint_green_text_color)
-            means = data[word.title()]
+            means = dictionary[word.title()]
             # if word have more means
             if type(means) == list:
                 i = 0
@@ -88,10 +106,10 @@ def search_word():
             else:
                 means_label.config(text=">> %s" % means)
 
-        elif word.upper() in data:
+        elif word.upper() in dictionary:
             hint_label.config(text="✓ Done!")
             hint_label_style.configure("Hint.TLabel", foreground=hint_green_text_color)
-            means = data[word.upper()]
+            means = dictionary[word.upper()]
             # if word have more means
             if type(means) == list:
                 i = 0
