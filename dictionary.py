@@ -3,21 +3,23 @@ from difflib import get_close_matches
 from tkinter import *
 from tkinter import ttk
 
+# Constants
+WINDOW_COLOR = "#12182B"
+MEANS_TEXT_COLOR = "#53CCEC"
+HINT_GREEN_TEXT_COLOR = "#00FF5F"
+HINT_RED_TEXT_COLOR = "#FF224E"
+
+
 # import dictionary
 with open("data.json") as dict_file:
     dictionary = json.load(dict_file)
 
-# Constants
-window_color = "#12182B"
-means_text_color = "#53CCEC"
-hint_green_text_color = "#00FF5F"
-hint_red_text_color = "#FF224E"
 
 # Window and frames
 win = Tk()
 win.title("Dictionary")
 win.geometry("750x400")
-win.config(bg=window_color)
+win.config(bg=WINDOW_COLOR)
 win.resizable(False, False)
 
 frame1 = ttk.Frame(win, style="Frame.TFrame")
@@ -29,34 +31,34 @@ frame2.place(relx=0.49, rely=0.45, relwidth=0.85, relheight=0.5, anchor="n")
 # Styles
 hemidvs_style = ttk.Style()
 hemidvs_style.configure(
-    "Hemidvs.TLabel", font=("Segoe UI", 8), foreground="white", background=window_color
+    "Hemidvs.TLabel", font=("Segoe UI", 8), foreground="white", background=WINDOW_COLOR
 )
 
 frames_style = ttk.Style()
-frames_style.configure("Frame.TFrame", background=window_color)
+frames_style.configure("Frame.TFrame", background=WINDOW_COLOR)
 
 title_label_style = ttk.Style()
 title_label_style.configure(
     "Title.TLabel",
     font=("Segoe UI", 22, "bold"),
     foreground="white",
-    background=window_color,
+    background=WINDOW_COLOR,
 )
 
 hint_label_style = ttk.Style()
 hint_label_style.configure(
     "Hint.TLabel",
     font=("Segoe UI", 10),
-    foreground=hint_green_text_color,
-    background=window_color,
+    foreground=HINT_GREEN_TEXT_COLOR,
+    background=WINDOW_COLOR,
 )
 
 means_label_style = ttk.Style()
 means_label_style.configure(
     "Means.TLabel",
     font=("Segoe UI", 10),
-    foreground=means_text_color,
-    background=window_color,
+    foreground=MEANS_TEXT_COLOR,
+    background=WINDOW_COLOR,
 )
 
 # Widgets
@@ -78,7 +80,7 @@ def search_word():
 
         if word in dictionary:
             hint_label.config(text="✓ Done!")
-            hint_label_style.configure("Hint.TLabel", foreground=hint_green_text_color)
+            hint_label_style.configure("Hint.TLabel", foreground=HINT_GREEN_TEXT_COLOR)
             means = dictionary[word]
             # if word have more means
             if type(means) == list:
@@ -93,7 +95,7 @@ def search_word():
 
         elif word.title() in dictionary:
             hint_label.config(text="✓ Done!")
-            hint_label_style.configure("Hint.TLabel", foreground=hint_green_text_color)
+            hint_label_style.configure("Hint.TLabel", foreground=HINT_GREEN_TEXT_COLOR)
             means = dictionary[word.title()]
             # if word have more means
             if type(means) == list:
@@ -108,7 +110,7 @@ def search_word():
 
         elif word.upper() in dictionary:
             hint_label.config(text="✓ Done!")
-            hint_label_style.configure("Hint.TLabel", foreground=hint_green_text_color)
+            hint_label_style.configure("Hint.TLabel", foreground=HINT_GREEN_TEXT_COLOR)
             means = dictionary[word.upper()]
             # if word have more means
             if type(means) == list:
@@ -122,11 +124,11 @@ def search_word():
                 means_label.config(text=">> %s" % means)
         else:
             hint_label.config(text="✗ We can't find your word, Please type correct.")
-            hint_label_style.configure("Hint.TLabel", foreground=hint_red_text_color)
+            hint_label_style.configure("Hint.TLabel", foreground=HINT_RED_TEXT_COLOR)
             means_label.config(text="")
     else:
         hint_label.config(text="✗ Oops.. You can't search noting!")
-        hint_label_style.configure("Hint.TLabel", foreground=hint_red_text_color)
+        hint_label_style.configure("Hint.TLabel", foreground=HINT_RED_TEXT_COLOR)
 
 
 # other Widgets
