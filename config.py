@@ -1,0 +1,11 @@
+# colors
+WINDOW_COLOR = "#12182B"
+MEANS_TEXT_COLOR = "#53CCEC"
+HINT_GREEN_TEXT_COLOR = "#00FF5F"
+HINT_RED_TEXT_COLOR = "#FF224E"
+
+# fonts
+ENTRY_FONT = ("Segoe UI", 13)
+BODY_FONT = ("Segoe UI", 10)
+COPYRIGHT_FONT = ("Segoe UI", 8)
+TITLE_FONT = ("Segoe UI", 22, "bold")

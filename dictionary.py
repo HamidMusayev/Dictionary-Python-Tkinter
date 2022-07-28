@@ -2,12 +2,16 @@ import json
 from difflib import get_close_matches
 from tkinter import Tk, ttk
 
-# Constants
-WINDOW_COLOR = "#12182B"
-MEANS_TEXT_COLOR = "#53CCEC"
-HINT_GREEN_TEXT_COLOR = "#00FF5F"
-HINT_RED_TEXT_COLOR = "#FF224E"
-
+from config import (
+    BODY_FONT,
+    COPYRIGHT_FONT,
+    ENTRY_FONT,
+    HINT_GREEN_TEXT_COLOR,
+    HINT_RED_TEXT_COLOR,
+    MEANS_TEXT_COLOR,
+    TITLE_FONT,
+    WINDOW_COLOR,
+)
 
 # import dictionary
 with open("data.json") as dict_file:
@@ -30,7 +34,7 @@ frame2.place(relx=0.49, rely=0.45, relwidth=0.85, relheight=0.5, anchor="n")
 # Styles
 hemidvs_style = ttk.Style()
 hemidvs_style.configure(
-    "Hemidvs.TLabel", font=("Segoe UI", 8), foreground="white", background=WINDOW_COLOR
+    "Hemidvs.TLabel", font=COPYRIGHT_FONT, foreground="white", background=WINDOW_COLOR
 )
 
 frames_style = ttk.Style()
@@ -39,7 +43,7 @@ frames_style.configure("Frame.TFrame", background=WINDOW_COLOR)
 title_label_style = ttk.Style()
 title_label_style.configure(
     "Title.TLabel",
-    font=("Segoe UI", 22, "bold"),
+    font=TITLE_FONT,
     foreground="white",
     background=WINDOW_COLOR,
 )
@@ -47,7 +51,7 @@ title_label_style.configure(
 hint_label_style = ttk.Style()
 hint_label_style.configure(
     "Hint.TLabel",
-    font=("Segoe UI", 10),
+    font=BODY_FONT,
     foreground=HINT_GREEN_TEXT_COLOR,
     background=WINDOW_COLOR,
 )
@@ -55,10 +59,11 @@ hint_label_style.configure(
 means_label_style = ttk.Style()
 means_label_style.configure(
     "Means.TLabel",
-    font=("Segoe UI", 10),
+    font=BODY_FONT,
     foreground=MEANS_TEXT_COLOR,
     background=WINDOW_COLOR,
 )
+
 
 # Widgets
 hemidvs_label = ttk.Label(win, style="Hemidvs.TLabel", text="© made by hemidvs")
@@ -67,7 +72,7 @@ hemidvs_label.place(anchor="n", relx=0.9, rely=0.9)
 title_label = ttk.Label(frame1, text="Type word to get mean...", style="Title.TLabel")
 title_label.place(relx=0.44, rely=0.08, relwidth=0.80, relheight=0.3, anchor="n")
 
-word_entry = ttk.Entry(frame1, font=("Segoe UI", 13))
+word_entry = ttk.Entry(frame1, font=ENTRY_FONT)
 word_entry.place(relx=0.32, rely=0.55, relwidth=0.55, relheight=0.2, anchor="n")
 
 
