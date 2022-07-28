@@ -1,7 +1,6 @@
 import json
 from difflib import get_close_matches
-from tkinter import *
-from tkinter import ttk
+from tkinter import Tk, ttk
 
 # Constants
 WINDOW_COLOR = "#12182B"
