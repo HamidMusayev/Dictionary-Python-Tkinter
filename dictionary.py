@@ -1,8 +1,7 @@
 import json
 from difflib import get_close_matches
-from fileinput import close
 from tkinter import Tk, ttk
-from typing import Dict, List, Optional
+from typing import Dict
 
 from config import (
     BODY_FONT,
