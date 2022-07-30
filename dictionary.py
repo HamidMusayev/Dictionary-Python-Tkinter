@@ -1,7 +1,8 @@
 import json
 from difflib import get_close_matches
+from fileinput import close
 from tkinter import Tk, ttk
-from typing import Dict
+from typing import Dict, List, Optional
 
 from config import (
     BODY_FONT,
@@ -21,9 +22,7 @@ with open("data.json") as dict_file:
 
 def main() -> None:
     word = word_entry.get().lower()
-    print(word)
     search_result = search(word)
-    print(search_result)
 
     if search_result["status"] is False:
         hint_label_style.configure("Hint.TLabel", foreground=HINT_RED_TEXT_COLOR)
@@ -73,7 +72,19 @@ def search(word: str) -> Dict:
 
     if meaning == "":
         result["status"] = False
-        result["hint_text"] = "✗ We can't find your word, Please type correct."
+
+        # check for close words to help user
+        close_words = get_close_matches(word, dictionary.keys(), n=2)
+        if len(close_words) == 0:
+            result["hint_text"] = "✗ We can't find searched word in our dictionary."
+            return result
+
+        # add close_ words to the hint text
+        if len(close_words) > 0:
+            result["hint_text"] += f'✗ Did you mean "{close_words[0]}"?'
+        if len(close_words) > 1:
+            result["hint_text"] += f' Or maybe "{close_words[1]}"?'
+
         return result
 
     result["hint_text"] = "✓ Done!"
